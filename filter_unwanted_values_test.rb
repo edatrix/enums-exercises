@@ -7,21 +7,37 @@ class FilterUnwantedValuesTest < Minitest::Test
     numbers = [2, 93, 7, 0, 0, 1, 0, 31, 0, 368]
     filtered = []
     numbers.each do |number|
+      if number != 0
+        filtered << number
+      end
       # write code here
     end
     assert_equal [2, 93, 7, 1, 31, 368], filtered
   end
 
   def test_remove_vowels
-    skip
+    #skip
     letters = "all your base are belong to us".chars
+    remaining =[]
+    vowels = %w(a e i o u y)
+    letters.each do |letter|
+      if ! vowels.include?(letter)
+        remaining << letter
+      end
+    end
     # write code here
     assert_equal "ll r bs r blng t s", remaining.join
   end
 
   def test_remove_numbers_divisible_by_3
-    skip
+    #skip
     numbers = (1..20)
+    remaining = []
+    numbers.each do |number|
+      if number%3 != 1
+        remaining << number
+      end
+    end
     # write code here
     expected = [1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20]
     assert_equal expected, remaining
